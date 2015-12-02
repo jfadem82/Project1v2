@@ -14,33 +14,26 @@ var game = {
 		} 
 		else return card.face;
 	},
-	// getHandValue: function(hand){
-	// 	var sum = 0;
-
-	// 	if (hand.indexOf("A") >= 0) {
-	// 		for(var i =0; i < hand.length; i++) {
-	// 			sum += this.getCardValue(hand[i])
-	// 		}
-	// 		if(sum <= 11){
-	// 			sum += 10
-	// 		} 
-	// 	} else {
-	// 		for(var i =0; i < hand.length; i++) {
-	// 			sum += this.getCardValue(hand[i])
-	// 		}
-	// 	}
-	// 	return sum;
-	// },
-
-	getAceValue: function(){
-
+	getHandValue: function(hand){
+		var sum = 0;
+			for(var i =0; i < hand.length; i++) {
+				sum += this.getCardValue(hand[i])
+			}
+		return sum;
 	},
+
+	// getAceValue: function(){
+
+	// },
 
 
 	player: {
-		hand: []
-		// value: 0,
+		hand: [],
+		value: 0,
 		// calcValue: function() {
+		// 	for (i = 0; i < hand.length; i++){
+		// 		var cardValue = getHandValue
+		// 	}
 
 		// }
 
