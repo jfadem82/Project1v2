@@ -14,12 +14,16 @@ var game = {
 		} 
 		else return card.face;
 	},
-	getHandValue: function(hand){
+	getHandValue: function(person){
 		var sum = 0;
-			for(var i =0; i < hand.length; i++) {
-				sum += this.getCardValue(hand[i])
+			for(var i =0; i < person.hand.length; i++) {
+				sum += this.getCardValue(person.hand[i])
 			}
-		return sum;
+		
+		if(person.hand.indexOf("A") >= 0 && sum <= 11) {
+			sum += 10;
+		}
+		person.value = sum
 	},
 
 	// getAceValue: function(){
@@ -40,12 +44,23 @@ var game = {
 	},
 
 	computer: {
-		hand: []
-		// value: 0,
-		// calcValue: function() {
+		hand: [],
+		value: 0,
+		decide: function(){
+			while (this.value<=15){
+				console.log("running decide")
+				game.deck.hit(this)
+				game.getHandValue(this)
 
+			}
+			if (this.value > 21){
+				console.log("Bust!")
+			}else {
+				console.log("Holding!")
+			}
 
-		// }
+		}
+			
 	},
 
 	deck: {
@@ -54,6 +69,7 @@ var game = {
 		deal: function(person) {
 			this.hit(person);
 			this.hit(person);
+			game.getHandValue(person);
 		},
 
 		hit: function(person){
