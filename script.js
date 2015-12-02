@@ -14,6 +14,7 @@ var game = {
 		} 
 		else return card.face;
 	},
+
 	getHandValue: function(person){
 		var sum = 0;
 			for(var i =0; i < person.hand.length; i++) {
@@ -26,6 +27,24 @@ var game = {
 		person.value = sum
 	},
 
+	getWinner: function() {
+		if (this.player.value > 21) {
+			alert("You Busted! Dealer Wins!")
+		} else if (this.player.value === this.computer.value) {
+			alert("Tie! Dealer Wins!")
+		} else if (this.computer.value > 21) {
+			alert("Dealer Busts! You Win!")
+		} else if (this.player.value > this.computer.value) {
+			alert("You Win!")
+		} else {
+			alert("Dealer Wins!")
+		}
+			this.player.hand = []
+			this.computer.hand = []
+			this.getHandValue(this.computer)
+			this.getHandValue(this.player)
+	},
+
 	// getAceValue: function(){
 
 	// },
@@ -34,12 +53,12 @@ var game = {
 	player: {
 		hand: [],
 		value: 0,
-		// calcValue: function() {
-		// 	for (i = 0; i < hand.length; i++){
-		// 		var cardValue = getHandValue
-		// 	}
+		decide: function() {
+			if (this.value > 21){
+				alert("Bust!")
+			}
+		}
 
-		// }
 
 	},
 
@@ -75,6 +94,7 @@ var game = {
 		hit: function(person){
 			var card = Math.floor((Math.random() * this.cards.length));
 			person.hand.push(this.cards.splice(card, 1)[0]);
+			game.getHandValue(person)
 		}
 		
 	}
