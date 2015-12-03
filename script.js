@@ -45,12 +45,22 @@ var game = {
 			this.getHandValue(this.player)
 	},
 
-	// getAceValue: function(){
-
+	// didIBust: function() {
+	// 	if (this.player.value > 21) {
+	// 	alert("You Busted! Dealer Wins!")
+			
+	// 	}
 	// },
 
 
 	player: {
+		getImages: function() {
+			var imagesArray = []
+			for(var i = 0; i < this.hand.length; i++) {
+				imagesArray.push(this.hand[i].getImage())
+			}
+			return imagesArray
+		},
 		hand: [],
 		value: 0,
 		decide: function() {
@@ -63,6 +73,13 @@ var game = {
 	},
 
 	computer: {
+		getImages: function() {
+			var imagesArray = []
+			for(var i = 0; i < this.hand.length; i++) {
+				imagesArray.push(this.hand[i].getImage())
+			}
+			return imagesArray
+		},
 		hand: [],
 		value: 0,
 		decide: function(){
@@ -100,12 +117,17 @@ var game = {
 	}
 }
 
-
-
-
 function Card(suit, face) {
 	this.suit = suit,
 	this.face = face
+}
+Card.prototype.getImage = function () {
+	var card = this.face + this.suit
+	return "<img src='http://blackjack.wojtekmurawski.me/img/" + card + ".jpg'>" ;
+}
+Card.prototype.getCompImage = function () {
+	var card = "XX"
+	return "<img src='http://blackjack.wojtekmurawski.me/img/" + card + ".jpg'>" ;
 }
 
 function makeCards(){
@@ -125,4 +147,36 @@ function init(){
 	game.deck.deal(game.computer)
 }
 
-init()
+$("#deal").on("click", function() {
+	init();
+	game.computer.decide();
+	var playerCards = game.player.getImages()
+	var playerHtmlString = ""
+	for(var i = 0; i < playerCards.length; i++){
+		playerHtmlString += playerCards[i]
+	}
+	$("#playerHand").html(playerHtmlString)
+	var computerStartImage = game.computer.hand[0].getCompImage()
+	var computerHtmlString = game.computer.hand[1].getImage()
+	$("#dealerHand").html(computerStartImage + computerHtmlString)
+})
+
+$("#hitMe").on("click", function() {
+	game.deck.hit(game.player)
+	// game.didIBust(game.player)
+	var playerCards = game.player.getImages()
+	var playerHtmlString = ""
+	for(var i = 0; i < playerCards.length; i++){
+		playerHtmlString += playerCards[i]
+	}
+	$("#playerHand").html(playerHtmlString)
+})
+$("#hold").on("click", function() {
+	var computerCards = game.computer.getImages()
+	var computerHtmlString = ""
+	for(var i = 0; i < computerCards.length; i++){
+		computerHtmlString += computerCards[i]
+	}
+	$("#dealerHand").html(computerHtmlString)
+	game.getWinner()
+})
