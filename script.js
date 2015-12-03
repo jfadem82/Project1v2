@@ -21,7 +21,7 @@ var game = {
 				sum += this.getCardValue(person.hand[i])
 			}
 		
-		if(person.hand.indexOf("A") >= 0 && sum <= 11) {
+		if(person.hand.valueOf("A") != -1 && sum <= 11) {
 			sum += 10;
 		}
 		person.value = sum
