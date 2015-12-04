@@ -26,7 +26,7 @@ var game = {
 				sum += this.getCardValue(person.hand[i])
 			}
 		
-		if(person.hand.valueOf("A") != -1 && sum <= 11) {
+		if(person.hand.indexOf("A") >= 0  && sum <= 10) {
 			sum += 10;
 		}
 		person.value = sum
@@ -149,6 +149,9 @@ function makeCards(){
 /*This function populates the deck, and then deals the first two cards to both the player and computer. 
 This happens when the "deal" button is pressed.*/
 function init(){
+	game.deck.cards = []
+	game.player.hand = []
+	game.computer.hand = []
 	makeCards()
 	game.deck.deal(game.player)
 	game.deck.deal(game.computer)
@@ -192,7 +195,22 @@ $("#hold").on("click", function() {
 	game.getWinner()
 })
 
+var clip = $( "#clip" )
+clip.get(0).loop = true
 
+function playClip () { 
+   clip.get(0).play() 
+}
+function muteClip () {
+	clip.get(0).pause()
+}
 
+$("#noise").on("click", function() {
+	if(clip.get(0).paused) {
+		return playClip()
+	} else if (clip.get(0).play()) {
+		return muteClip()
+	}
+})
 
 
