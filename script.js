@@ -36,15 +36,15 @@ var game = {
 	runs the "getValue" functions on both the player & computer*/
 	getWinner: function() {
 		if (this.player.value > 21) {
-			alert("You Busted, Buster!")
+			alert("You Busted! Hit Deal To Restart!")
 		} else if (this.player.value === this.computer.value) {
-			alert("Tie! Dealer Wins!")
+			alert("Tie! Dealer Wins! Hit Deal To Restart!")
 		} else if (this.computer.value > 21) {
-			alert("Dealer Busts! You Win!")
+			alert("Dealer Busts! You Win! Hit Deal To Restart!")
 		} else if (this.player.value > this.computer.value) {
-			alert("You Win! Play Again!")
+			alert("You Win! Hit Deal To Restart!")
 		} else {
-			alert("Dealer Wins! Play Again!")
+			alert("Dealer Wins! Hit Deal To Restart!")
 		}
 			this.player.hand = []
 			this.computer.hand = []
@@ -153,15 +153,6 @@ function init(){
 	game.deck.deal(game.player)
 	game.deck.deal(game.computer)
 }
-//JQUERY AND SHIT. 
-
-$("#noise").on("click", function() {
-	if (clip.get(0).mute = true) {
-		return playClip ()
-	} else if (clip.get(0).play = true) {
-		return muteClip ()
-	}
-})
 /*This Jquery function runs when the Deal button is clicked. It runs the init function described above, as well
 as actually displays the computer/player's card images on the game screen. Additionally, it places the computer's
 first card image face down at the beginning of the game.*/
@@ -201,14 +192,7 @@ $("#hold").on("click", function() {
 	game.getWinner()
 })
 
-var clip = $( "#clip" )
-clip.get(0).loop = true
-// clip.get(0).muted = true
 
-function playClip () { 
-   clip.get(0).play() 
-}
-function muteClip () {
-clip.get(0).mute
-}
-Status API Training Shop Blog About Pricing
+
+
+
