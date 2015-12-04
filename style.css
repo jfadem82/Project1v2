@@ -1,11 +1,17 @@
 body {
-	background-image: url(https://bamfstyle.files.wordpress.com/2013/10/tstone-vest3a.jpg) ; 
+	background-image: url(https://bamfstyle.files.wordpress.com/2013/10/tstone-vest3a.jpg); 
+	background-size: cover;
 	
 	
 
 	
 	}
 
+
+#bust {
+	color: white;
+	font-size: 2em;
+}
 .buttons {
 	text-align: right;
 	/*margin-top: 200px;*/

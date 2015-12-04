@@ -180,3 +180,10 @@ $("#hold").on("click", function() {
 	$("#dealerHand").html(computerHtmlString)
 	game.getWinner()
 })
+var clip = $( "#clip" )
+clip.get(0).loop = true
+
+function playClip () { 
+   clip.get(0).play() 
+}
+playClip();
