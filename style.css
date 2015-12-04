@@ -8,14 +8,19 @@ body {
 	}
 
 
-#bust {
+#party {
 	color: white;
-	font-size: 2em;
+	font-size: 1.3em;
+	margin-top: 200px;
+	/*max-width: 100px;*/
+	/*max-height: 34px;*/
 }
 .buttons {
 	text-align: right;
 	/*margin-top: 200px;*/
 	/*margin-left: 450px;*/
+	max-width: 400px;
+	float: right;
 }
 
 .hand-label {
@@ -23,6 +28,7 @@ body {
 		font-size: 1.1em;
 		margin-top: 2%;
 		color: white;
+		/*max-width: 270px;*/
 }
 
 .hand {
@@ -31,4 +37,5 @@ body {
 		text-align: center;
 		min-height: 260px;
 }
+
 
